@@ -1,0 +1,101 @@
+﻿@model List<Stat>
+@{
+
+    ViewData["Title"] = "Statistics";
+
+}
+
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+<style>
+    .car_selec {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <div class="jumbotron">
+
+        <p class="lead">Statystyka </p>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+
+                <div class="chart-container">
+
+                    <div class="error_placer">
+                        @ViewBag.info_msg
+                    </div>
+
+
+
+                    @if (ViewBag.access)
+                    {
+                        <table class="table">
+                            <tr>
+
+                                <th>data</th>
+                                <th>host</th>
+                                <th>strona</th>
+
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.date_visited)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.visit_host_ip)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.page)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else
+                    {
+                        <p>Brak dostępu do statystyk</p>
+                    }
+
+                  
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+
+</div>
+
+

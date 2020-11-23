@@ -1,0 +1,150 @@
+﻿@model List<Czynnosc>
+@{
+
+}
+
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <div class="jumbotron">
+        <h1>Ewidencja pojazdów</h1>
+        <p class="lead">Czynnosci serwisowe </p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+
+
+
+                <div class="chart-container">
+
+
+                    <h3>Dodawanie czynności serwisowej</h3>
+
+
+                    <div class="form-group">
+                        <label for="data_input">data</label>
+                        <input type="date" class="form-control" id="data_input" aria-describedby="dateHelp" >
+                        <small id="dateHelp" class="form-text text-muted">wypełnij datę</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="przebieg_input">przebieg</label>
+                        <input type="number" class="form-control" id="przebieg_input" aria-describedby="przebiegHelp">
+                        <small id="przebiegHelp" class="form-text text-muted">wypełnij przebieg</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select_pojazd">pojazd</label>
+                       
+                        <select id="select_pojazd" class="form-control" name="select_pojazd">
+                            <option value="1">Opel Meriva B</option>
+                            <option value="2">Opel Corsa D</option>
+                        </select>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opis_input">opis</label>
+
+                        <textarea id="opis_input" class="form-control" rows="4" cols="30" aria-describedby="opisHelp"> </textarea>
+                        <small id="opisHelp" class="form-text text-muted">wypełnij opis</small>
+                    </div>
+
+
+
+                    <div class="downpanel" style="margin-left:auto;margin-right:auto; text-align:center;width: 250px;">
+
+                        <div class="btns">
+                            <input id="add_activity" type="button" value="Dodaj" class="btn btn-primary" />
+                        </div>
+                        <div id="errlbl">
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row">
+
+</div>
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+        
+      
+
+        $("#add_activity").click(function () {
+
+            var datewpis = $("#data_input").val();
+            var przebiegwpis = $("#przebieg_input").val();
+            var opiswpis = $("#opis_input").val();
+            var pojazd = $("#select_pojazd").val();
+
+
+            if (datewpis != "" && przebiegwpis != "" && opiswpis != "") {
+
+                $.ajax({
+                    type: "POST",
+                    url: "@ViewBag.path/Home/SaveActivity",
+                    data: { data: datewpis, przebieg: przebiegwpis, opis: opiswpis,pojazd: pojazd },
+                    success: function (response) {
+                        console.log(response);
+                        alert(response);
+                        if (response == "OK") {
+                            window.location.href = '@ViewBag.path/Home/Serwis';
+                        } else {
+                            $("#errlbl").html("");
+                        }
+                    },
+
+                    dataType: "text"
+                });
+
+            } else {
+
+                $("#errlbl").append("Nie wypełniono kolumn wymaganych !");
+
+            }
+
+        });
+
+
+
+
+    });
+
+
+
+
+
+
+</script>
+

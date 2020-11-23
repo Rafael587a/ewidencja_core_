@@ -1,0 +1,193 @@
+﻿@model List<Gaz>
+@{
+
+    ViewData["Title"] = "Wykres przebiegu kilometrów";
+}
+<script src="@ViewBag.path/js/Chart.bundle.min.js"></script>
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+<style>
+    .car_selec {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <div class="jumbotron">
+        <h1>Gaz</h1>
+        <p class="lead">zużycie gazu</p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+                <div class="car_selec">
+                    rok
+                    <select id="yearselector">
+                        <option value="0">wszystkie</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+
+                <div class="chart-container">
+
+                    <div class="error_placer">
+                        @ViewBag.info_msg
+                    </div>
+
+
+                    <div class="cntr_btn" style="text-align:center; padding:20px;">
+                        <input id="add_activity_gas" type="button" value="Dodaj zużycie gazu" class="btn btn-primary" />
+                    </div>
+
+
+                    <div id="partialDiv">
+
+                        @await Html.PartialAsync("_GazValuesPartial", null)
+                    </div>
+
+                    <div class="wyk_btn text-center">
+                        <button id="renderBtn" class="btn btn-primary">
+                            Wykres
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="">
+                <canvas id="myChart" style="text-align:center;"></canvas>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+
+</div>
+
+<script type="text/javascript">
+
+
+    $("#renderBtn").click(
+        
+        function () {
+
+            var ctx_live = document.getElementById("myChart");
+            var myChart = new Chart(ctx_live, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        borderWidth: 1,
+                        borderColor: '#00c0ef',
+                        label: 'zużycie gazu: ',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: "Gaz ",
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                               
+                            }
+                        }]
+                    }
+                }
+            });
+
+            
+                $.ajax({
+                    url: "@ViewBag.path/Home/GetGazChartYear",
+                    type: 'GET',
+                    success: function (data) {
+                       
+                        for (var i = 0; i < data.length ; i++) {
+
+                            data[i]["stan_licznika"] = data[i]["stan_licznika"].replace(/,/g, '.');
+
+                           
+                            myChart.data.labels.push(data[i]["data"]);
+                            myChart.data.datasets[0].data.push(data[i]["stan_licznika"]);
+                        }
+
+                        myChart.update();
+                    }
+                });
+           
+
+        }  
+    );
+
+
+
+
+    $(document).ready(function () {
+
+        $("#add_activity_gas").click(function () {
+            window.location.href = "@ViewBag.path/Home/AddActivityGas";
+        });
+
+
+        $("#yearselector").on("change", function () {
+
+                    var y = $("#yearselector :selected").val();
+
+                    $.ajax(
+                        {
+                            url: '@ViewBag.path/Home/GetGazRecord?year=' + y,
+                            type: 'GET',
+                            data: "",
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+
+                                $("#partialDiv").html(data);
+                            },
+                            error: function () {
+                                alert("error");
+                            }
+                        });
+                });
+
+    });
+
+
+</script>
+

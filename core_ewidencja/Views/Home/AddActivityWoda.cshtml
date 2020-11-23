@@ -1,0 +1,122 @@
+﻿@model List<Woda>
+@{
+
+}
+
+
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+
+<div id="myCarousel" class="slide" data-interval="6000">
+
+    <div class="jumbotron">
+        <h1>Woda</h1>
+        <p class="lead">edycja</p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+
+
+
+                <div class="chart-container">
+
+
+                    <h3>Dodawanie zużycia wody</h3>
+
+                    <div class="form-group">
+                        <label for="data_input">data</label>
+                        <input type="date" class="form-control" id="data_input" aria-describedby="dateHelp">
+                        <small id="dateHelp" class="form-text text-muted">wypełnij datę</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data_input">stan licznika</label>
+                        <input type="number" class="form-control" id="stan_licznika_input" aria-describedby="stanHelp">
+                        <small id="stanHelp" class="form-text text-muted">wypełnij stan licznika</small>
+                    </div>
+
+                   
+                    <div class="downpanel" style="margin-left:auto;margin-right:auto; text-align:center;width: 250px;">
+
+                        <div class="btns">
+                            <input id="add_activity_woda" type="button" value="Dodaj" class="btn btn-primary" />
+                        </div>
+                        <div id="errlbl">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row">
+
+</div>
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+        $("#add_activity_woda").click(function () {
+
+            var datewpis = $("#data_input").val();
+            var licznikwpis = $("#stan_licznika_input").val();
+
+
+            if (datewpis != "" && licznikwpis != "") {
+
+                $.ajax({
+                    type: "POST",
+                    url: "@ViewBag.path/Home/SaveActivityWoda",
+                    data: { data: datewpis, licznik: licznikwpis },
+                    success: function (response) {
+
+                        console.log(response);
+
+                        if (response == "OK") {
+                            window.location.href = "@ViewBag.path/Home/Woda";
+                        }
+                    },
+
+                    dataType: "text"
+                });
+
+            } else {
+
+                $("#errlbl").append("Nie wypełniono kolumn wymaganych !");
+
+            }
+
+        });
+
+    });
+
+
+
+
+
+
+</script>
+

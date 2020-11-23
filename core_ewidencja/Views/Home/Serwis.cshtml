@@ -1,0 +1,102 @@
+﻿@model List<Czynnosc>
+@{
+
+}
+<script src="@ViewBag.path/js/Chart.bundle.min.js"></script>
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+<section id="about" class="page-section">
+    <div class="jumbotron">
+        <h1>Ewidencja pojazdów</h1>
+        <p class="lead">Czynnosci serwisowe </p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+
+
+
+                <div class="chart-container">
+
+
+
+                    <div class="error_placer">
+                        @ViewBag.info_msg
+                    </div>
+
+
+                    <div class="cntr_btn" style="text-align:center; padding:20px;">
+                        <input id="add_activity" type="button" value="Dodaj czynność" class="btn btn-primary" />
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>przebieg</th>
+                            <th>data</th>
+                            <th>opis</th>
+
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.przebieg)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.data)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.opis)
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+    </section>
+
+    <div class="row">
+
+    </div>
+
+    <script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+
+        $("#add_activity").click(function () {
+
+
+
+            window.location.href = "@ViewBag.path/Home/AddActivity";
+
+
+        });
+
+
+    });
+
+    </script>
+

@@ -1,0 +1,26 @@
+﻿@model List<Gaz>
+
+<table class="table">
+    <tr>
+        <th>Kwh</th>
+        <th>data</th>
+        <th>stan licznika</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kwh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stan_licznika)
+            </td>
+
+        </tr>
+    }
+</table>
+

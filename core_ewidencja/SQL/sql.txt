@@ -1,0 +1,82 @@
+﻿
+CREATE TABLE [dbo].[czynnosciPojazdy](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_pojazdu] [int] NULL,
+	[przebieg] [int] NULL,
+	[opis_czynnosci] [varchar](255) NULL,
+	[data] [varchar](250) NULL,
+	[id_vehicle] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[Pojazdy](
+	[id_pojazdu] [int] NOT NULL,
+	[nazwa_pojazdu] [varchar](250) NULL,
+	[pojemnosc_silnika] [varchar](200) NULL,
+	[rocznik] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_pojazdu] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[tblStats](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[visit_host_ip] [nvarchar](400) NULL,
+	[date_visited] [datetime] NULL,
+	[counter] [int] NULL,
+	[page] [nvarchar](1) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+go
+
+CREATE TABLE [dbo].[tblZuzycieEnergii](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[DATA] [datetime] NULL,
+	[wsk_licznika] [decimal](8, 2) NULL,
+	[kwh] [decimal](6, 2) NULL,
+	[id_user] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[tblZuzycieGazu](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[DATA] [datetime] NULL,
+	[wsk_licznika] [decimal](8, 2) NULL,
+	[kwh] [decimal](6, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[tblZuzycieWody](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[date] [date] NULL,
+	[wsk_licznika] [decimal](10, 6) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

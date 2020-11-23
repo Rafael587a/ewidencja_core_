@@ -1,0 +1,106 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+.cntr_btn {
+    text-align:center;
+}
+
+.w3-padding {
+    padding: 8px 16px !important;
+}
+
+.w3-content {
+    max-width: 980px;
+}
+
+.w3-content, .w3-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w3-main, #main {
+    transition: margin-left .4s;
+}
+
+.w3-padding-16 {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+}
+
+.w3-center {
+    text-align: center !important;
+}
+
+.w3-row-padding, .w3-row-padding > .w3-half, .w3-row-padding > .w3-third, .w3-row-padding > .w3-twothird, .w3-row-padding > .w3-threequarter, .w3-row-padding > .w3-quarter, .w3-row-padding > .w3-col {
+    padding: 0 8px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+#myCarousel {
+    box-shadow: 0 0 60px 0 rgba(0,0,0,.6);
+}
+
+#renderBtn {
+    text-align:center;
+}
+.chart_div {
+    margin-left: auto;
+    margin-right: auto;
+ 
+    text-align: center;
+}
+.wyk_btn {
+    margin-left: auto;
+    margin-right: auto;
+    
+    text-align: center;
+}
+.navbar-inverse {
+    background-color: #337ab7;
+}
+.hover {
+    background-color: #FFFF33;
+    color: #333300;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color:#ffffff;
+    font-weight:bold;
+}

@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+ 
+</script>
+
+<style>
+
+   
+
+</style>
+
+<link rel="stylesheet" href="~/css/w3.css" />
+
+
+<section id="about" class="page-section">
+    <div class="container-fluid">
+
+        <div class="w3-main w3-content w3-padding" style="max-width:1140px;margin-top:100px">
+
+
+           
+
+            <!-- First Photo Grid-->
+            <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+
+
+                <div class="w3-quarter">
+                    @if (@ViewBag.host == "95.171.118.190")
+                    {
+                        <a href="http://95.171.118.190/islandia/">
+                            <img src="@ViewBag.path/images/islandia.jpg" style="width:100%">
+                            <h3>Islandia</h3>
+                            <p>zdjęcia z wyprawy na islandie 16-23 września 2019</p>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="http://192.168.3.33/islandia/">
+                            <img src="@ViewBag.path/images/islandia.jpg" style="width:100%">
+                            <h3>Islandia</h3>
+                            <p>zdjęcia z wyprawy na islandie 16-23 września 2019</p>
+                        </a>
+                    }
+                </div>
+
+
+                <div class="w3-quarter">
+                    @if (@ViewBag.host == "95.171.118.190")
+                    {
+                        <a href="http://95.171.118.190/ischgl/">
+                            <img src="@ViewBag.path/images/narty_austria.jpg" style="width:100%">
+                            <h3>Austria</h3>
+                            <p>narty w austria marzec 2019</p>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="http://192.168.3.33/ischgl/">
+                            <img src="@ViewBag.path/images/narty_austria.jpg" style="width:100%">
+                            <h3>Austria</h3>
+                            <p>narty w austria marzec 2019</p>
+                        </a>
+                    }
+                </div>
+
+
+                <div class="w3-quarter">
+                    <a href="http://192.168.3.33:100/Home/Ewidencja">
+                        <img src="@ViewBag.path/images/ewidencja.jpg" style="width:100%">
+                        <h3>Ewidencja</h3>
+                        <p>aplikacja Ewidencja</p>
+                    </a>
+                </div>
+                <div class="w3-quarter">
+                    <a href="http://192.168.3.33:5002/Home/Jednostki">
+                        <img src="@ViewBag.path/images/jednostki.jpg" style="width:100%">
+                        <h3>Przelicznik jednostek</h3>
+                        <p> aplikacja konwerter jednostek</p>
+                    </a>
+                </div>
+                </div>
+
+            <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+                <div class="w3-quarter">
+                    @if (@ViewBag.host == "95.171.118.190")
+                    {
+                        <a href="http://95.171.118.190/alpylatem/">
+                            <img src="@ViewBag.path/images/alpy_latem.jpg" style="width:100%">
+                            <h3>alpy latem</h3>
+                            <p>wyprawy letnie</p>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="http://192.168.3.33/alpylatem/">
+                            <img src="@ViewBag.path/images/alpy_latem.jpg" style="width:100%">
+                            <h3>alpy latem</h3>
+                            <p>wyprawy letnie</p>
+                        </a>
+                    }
+                </div>
+                <div class="w3-quarter">
+
+                    <a href="http://95.171.118.190/narty/">
+                        <img src="@ViewBag.path/images/wyjazdy_narty.jpg" style="width:100%">
+                        <h3>narty</h3>
+                        <p>wyjazdy na narty</p>
+                    </a>
+                </div>
+                <div class="w3-quarter">
+                    @if (@ViewBag.host == "95.171.118.190")
+                    {
+                        <a href="http://95.171.118.190/dron/">
+                            <img src="@ViewBag.path/images/z_drona.JPG" style="width:100%">
+                            <h3>widoki z drona</h3>
+                            <p>ciekawe widoki z drona</p>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="http://192.168.3.33/dron/">
+                            <img src="@ViewBag.path/images/z_drona.JPG" style="width:100%">
+                            <h3>widoki z drona</h3>
+                            <p>ciekawe widoki z drona</p>
+                        </a>
+                    }
+                </div>
+                <div class="w3-quarter">
+                    nowe
+                </div>
+
+            </div>
+
+            </div>
+
+
+        
+
+
+
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+﻿
+@{
+
+}
+
+<script src="@ViewBag.path/js/Chart.bundle.min.js"></script>
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+
+
+
+<div id="myCarousel">
+
+    <div class="jumbotron">
+        <h3> Notatki i pliki, jednostki</h3>
+        <p class="lead">Przelicznik jednostek </p>
+
+    </div>
+
+    <div class="row" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <div class="col-xs-6" style="text-align:center; width: 25em;float:left;">
+
+
+            <select name="pre_unit" id="pre_unit">
+                <option value="mile">mile</option>
+                <option value="km">km</option>
+                <option value="cale">cale</option>
+                <option value="cm">cm</option>
+                <option value="galony">galony</option>
+                <option value="litry">litry</option>
+                <option value="kg">kg</option>
+                <option value="funt">funt</option>
+                <option value="bar">bar</option>
+                <option value="psi">psi (lbf/in <sup>2</sup>)</option>
+                <option value="hPa">hPa</option>
+
+            </select>
+
+            <input type="text" class="form-control" id="pre_data_input" name="pre_data_input">
+        </div>
+        <div class="col-xs-6" style="text-align:center; width: 25em;float:right">
+
+            <select name="post_unit" id="post_unit">
+                <option value="mile">mile</option>
+                <option value="km">km</option>
+                <option value="cale">cale</option>
+                <option value="cm">cm</option>
+                <option value="galony">galony</option>
+                <option value="litry">litry</option>
+                <option value="kg">kg</option>
+                <option value="funt">funt</option>
+                <option value="bar">bar</option>
+                <option value="psi">psi (lbf/in <sup>2</sup>)</option>
+                <option value="hPa">hPa</option>
+
+            </select>
+            <input type="text" class="form-control" id="post_data_input" name="post_data_input">
+        </div>
+    </div>
+    <div class="row">
+        <div class="btns" style="text-align:center;">
+            <input id="przelicz_btn" type="submit" value="Przelicz" class="btn btn-primary" />
+        </div>
+        <div class="col-md-4" id="wynik">
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @ViewBag.info_msg
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+<div class="row">
+
+</div>
+
+<script type="text/javascript">
+
+  
+
+    $(document).ready(function () {
+
+        $("#przelicz_btn").click(function () {
+
+
+            var pre_unit = $("#pre_unit").val();
+            var pre_value = $("#pre_data_input").val();
+
+            var post_unit = $("#post_unit").val();
+            var post_value = $("#post_data_input").val();
+
+            $.ajax({
+                type: "POST",
+                url: "@ViewBag.path/Home/Przelicz",
+                data: { pre_unit: pre_unit, pre_value: pre_value, post_unit: post_unit, post_value:post_value },
+                success: function (response) {
+                    console.log(response);
+
+                  
+
+                    $("#post_data_input").val(response);
+
+                },
+
+                dataType: "text"
+            });
+
+        });
+    });
+
+
+
+    
+</script>
+

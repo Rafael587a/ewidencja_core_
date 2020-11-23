@@ -1,0 +1,92 @@
+﻿@model List<Currency>
+@{
+
+    ViewData["Title"] = "Kurs walut";
+}
+<script src="@ViewBag.path/js/Chart.bundle.min.js"></script>
+<script src="@ViewBag.path/js/jquery-3.3.1.min.js"></script>
+
+<style>
+    .car_selec {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <div class="jumbotron">
+        <h1>Waluty</h1>
+        <p class="lead">kurs walut z dzsiejszego dnia : @DateTime.Now.Year.ToString() -  @DateTime.Now.Month.ToString() - @DateTime.Now.Day.ToString()</p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="box-body">
+
+                <div class="car_selec">
+                    rok
+                    <select id="yearselector">
+                        <option value="2020">2020</option>
+                       
+                    </select>
+                </div>
+
+                <div class="chart-container">
+
+                    <div class="error_placer">
+                        @ViewBag.info_msg
+                    </div>
+                    <p>Kurs 1 EURO = </p>
+
+                    <table class="table">
+                        <tr>
+                            <th>currency</th>
+                            <th>wartość</th>
+
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cur)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DayValue)
+                                </td>
+
+
+                            </tr>
+                        }
+                    </table>
+
+
+                  
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+
+</div>
+
+
