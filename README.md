@@ -1,0 +1,1 @@
+# ewidencja_core_
